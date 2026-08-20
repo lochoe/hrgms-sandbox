@@ -319,6 +319,11 @@ summary {
   color: #d9c9a6;
 }
 
+.cta .btn-gold {
+  background: #f6efe2;
+  color: var(--ink) !important;
+}
+
 .site-footer {
   padding-top: 0;
   color: var(--muted);
