@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HargaEmas.my — Harga Emas Malaysia Hari Ini</title>
+    <meta
+      name="description"
+      content="Portal rujukan harga emas, Ar-Rahnu dan kedai emas di Malaysia. Harga spot 999, 916 dan karat lain, dikemas kini secara langsung."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c1408'/%3E%3Cpath d='M6 20h20l-3-10H9L6 20z' fill='%23d4af37'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="gold-line" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#utama">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 32" width="28" height="22">
+            <rect x="2" y="10" width="36" height="16" rx="2" fill="#d4af37" />
+            <rect x="6" y="6" width="28" height="8" rx="1.5" fill="#f0d77a" />
+            <path d="M10 10h20v4H10z" fill="#b8860b" opacity="0.45" />
+          </svg>
+        </span>
+        <span class="brand-text">HargaEmas<span>.my</span></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+
+      <nav id="site-nav" class="site-nav">
+        <a href="#harga">Harga</a>
+        <a href="#kalkulator">Kalkulator</a>
+        <a href="#kenapa">Kenapa kami</a>
+        <a href="#soalan">Soalan lazim</a>
+        <a class="nav-cta" href="https://hargaemas.my" target="_blank" rel="noopener">Buka portal</a>
+      </nav>
+    </header>
+
+    <main id="utama">
+      <section class="hero">
+        <p class="eyebrow">Portal rujukan emas Malaysia</p>
+        <h1>Harga emas hari ini,<br />tanpa teka-teki.</h1>
+        <p class="lede">
+          HargaEmas.my mengagregat harga spot, pelaburan emas dan Ar-Rahnu supaya
+          anda boleh bandingkan sebelum beli, jual atau pajak.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#harga">Lihat harga semasa</a>
+          <a class="btn btn-ghost" href="#kalkulator">Anggar nilai emas</a>
+        </div>
+        <p class="hero-note" id="live-status">Memuatkan harga spot…</p>
+      </section>
+
+      <section id="harga" class="section prices">
+        <div class="section-head">
+          <h2>Harga spot mengikut karat</h2>
+          <p>Ringgit Malaysia setiap gram. Sumber: api.hargaemas.my</p>
+        </div>
+        <div id="price-grid" class="price-grid" aria-live="polite">
+          <article class="price-card skeleton"><div></div><div></div></article>
+          <article class="price-card skeleton"><div></div><div></div></article>
+          <article class="price-card skeleton"><div></div><div></div></article>
+          <article class="price-card skeleton"><div></div><div></div></article>
+          <article class="price-card skeleton"><div></div><div></div></article>
+          <article class="price-card skeleton"><div></div><div></div></article>
+        </div>
+        <p class="fine-print">
+          Harga rujukan spot sahaja — belum termasuk premium, upah, susut nilai atau caj kedai.
+        </p>
+      </section>
+
+      <section id="kalkulator" class="section calculator">
+        <div class="calc-panel">
+          <div>
+            <h2>Kalkulator nilai emas</h2>
+            <p>
+              Anggaran pantas berdasarkan harga spot semasa. Berguna sebelum ke kedai
+              atau Ar-Rahnu.
+            </p>
+          </div>
+          <form id="gold-form" class="calc-form">
+            <label>
+              Berat (gram)
+              <input id="weight" type="number" min="0.01" step="0.01" value="10" required />
+            </label>
+            <label>
+              Karat
+              <select id="karat">
+                <option value="999">999 — 24K tulen</option>
+                <option value="916" selected>916 — 22K barang kemas</option>
+                <option value="835">835 — 20K</option>
+                <option value="750">750 — 18K</option>
+                <option value="585">585 — 14K</option>
+                <option value="375">375 — 9K</option>
+              </select>
+            </label>
+            <button class="btn btn-gold" type="submit">Kira nilai</button>
+          </form>
+          <div class="calc-result" id="calc-result">
+            <span class="calc-label">Anggaran nilai spot</span>
+            <strong id="calc-value">RM —</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="kenapa" class="section why">
+        <div class="section-head">
+          <h2>Kenapa pilih HargaEmas.my?</h2>
+          <p>Satu tempat untuk semak, banding dan buat keputusan.</p>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <h3>Harga terkini</h3>
+            <p>Harga spot dan kadar institusi dikemas kini kerap supaya rujukan anda tidak ketinggalan.</p>
+          </article>
+          <article>
+            <h3>Perbandingan objektif</h3>
+            <p>Bandingkan pelaburan emas dan Ar-Rahnu daripada pelbagai penyedia tanpa tekaan.</p>
+          </article>
+          <article>
+            <h3>API percuma</h3>
+            <p>Pembina boleh tarik harga emas Malaysia melalui API awam untuk aplikasi sendiri.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="soalan" class="section faq">
+        <div class="section-head">
+          <h2>Soalan lazim</h2>
+        </div>
+        <div class="faq-list" id="faq-list">
+          <details open>
+            <summary>Adakah ini harga kedai emas?</summary>
+            <p>Tidak. Ini harga rujukan spot. Harga kedai biasanya termasuk premium, upah dan spread.</p>
+          </details>
+          <details>
+            <summary>Adakah HargaEmas.my sumber rasmi?</summary>
+            <p>
+              Tidak. HargaEmas.my (HRGMS) ialah portal dan penyedia API yang mengagregat sumber pasaran.
+              Untuk harga rasmi jenama tertentu, rujuk laman penyedia itu.
+            </p>
+          </details>
+          <details>
+            <summary>Di mana API harga emas?</summary>
+            <p>
+              Endpoint awam: <code>https://api.hargaemas.my/prices</code> dan
+              <code>https://hargaemas.my/api/gold-prices.json</code>.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Semak harga emas Malaysia sekarang</h2>
+        <p>Buka portal penuh untuk graf, Ar-Rahnu, pelaburan emas dan alert harga.</p>
+        <a class="btn btn-gold" href="https://hargaemas.my" target="_blank" rel="noopener">Lawati hargaemas.my</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Landing page rujukan untuk <a href="https://hargaemas.my">hargaemas.my</a>. Harga untuk paparan sahaja.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
