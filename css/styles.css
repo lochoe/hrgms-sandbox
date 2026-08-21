@@ -17,6 +17,7 @@
   --btn-tertiary: #282828;
   --btn-text: #ffffff;
   --muted: #64748b;
+  --pad: 1rem;
 }
 
 * {
@@ -25,14 +26,18 @@
 
 html {
   scroll-behavior: smooth;
+  background: #c5d0dc;
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 430px;
+  min-height: 100dvh;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--card-text);
   background: var(--body-bg);
-  line-height: 1.55;
+  line-height: 1.5;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 a {
@@ -50,8 +55,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.75rem 6vw;
+  gap: 0.75rem;
+  padding: 0.7rem var(--pad);
+  padding-top: calc(0.7rem + env(safe-area-inset-top));
   background: var(--nav-bg);
   color: var(--nav-text);
 }
@@ -59,58 +65,86 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   text-decoration: none;
   color: var(--nav-text);
 }
 
 .brand-text {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
 }
 
 .brand-text span {
   color: #ffedd5;
 }
 
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-}
-
-.site-nav a {
-  text-decoration: none;
-  color: var(--nav-text);
-  font-size: 0.95rem;
-}
-
 .nav-toggle {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
   border: 1px solid rgba(255, 255, 255, 0.45);
   background: transparent;
   color: var(--nav-text);
   border-radius: 8px;
-  padding: 0.4rem 0.9rem;
+  padding: 0 0.85rem;
+  font: inherit;
+  font-weight: 700;
+}
+
+.site-nav {
+  display: none;
+  position: absolute;
+  top: calc(52px + env(safe-area-inset-top));
+  left: var(--pad);
+  right: var(--pad);
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: var(--nav-bg);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  box-shadow: var(--home-dashboard-card-shadow);
+}
+
+.site-nav.open {
+  display: flex;
+}
+
+.site-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  text-decoration: none;
+  color: var(--nav-text);
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.nav-cta {
+  justify-content: center;
+  background: var(--btn-primary);
+  font-weight: 700;
 }
 
 .hero,
 .section,
-.cta,
 .site-footer {
-  padding: 4rem 6vw;
+  padding: 1.35rem var(--pad);
 }
 
 .hero {
-  max-width: 920px;
+  padding-top: 1.6rem;
 }
 
 .eyebrow {
-  margin: 0 0 0.75rem;
-  letter-spacing: 0.12em;
+  margin: 0 0 0.55rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: var(--nav-bg);
 }
@@ -123,40 +157,42 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.1rem, 5vw, 3.4rem);
-  line-height: 1.15;
+  font-size: 1.85rem;
+  line-height: 1.2;
   font-weight: 700;
 }
 
 .lede {
-  max-width: 42rem;
-  font-size: 1.08rem;
+  margin: 0.75rem 0 1rem;
+  font-size: 0.98rem;
   color: var(--muted);
 }
 
-.hero-actions,
-.cta {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
+.hero-actions {
+  display: grid;
+  gap: 0.65rem;
 }
 
 .hero-note {
+  margin: 0.85rem 0 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.86rem;
 }
 
-.btn {
+.btn,
+.btn-gold {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.7rem 1.15rem;
-  border-radius: 8px;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
   font: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -164,13 +200,6 @@ h1 {
 .nav-cta {
   background: var(--btn-primary);
   color: var(--btn-text) !important;
-  text-decoration: none;
-  border-radius: 8px;
-  padding: 0.5rem 0.95rem;
-}
-
-.btn-gold {
-  padding: 0.7rem 1.15rem;
 }
 
 .btn-gold:hover,
@@ -187,22 +216,23 @@ h1 {
 .section-head h2,
 .calc-panel h2,
 .cta h2 {
-  margin: 0 0 0.4rem;
-  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  margin: 0 0 0.35rem;
+  font-size: 1.3rem;
 }
 
 .section-head p,
 .calc-panel p,
 .cta p {
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
   color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .price-grid,
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
 }
 
 .price-card,
@@ -216,62 +246,54 @@ h1 {
 }
 
 .price-card {
-  padding: 1.1rem 1.15rem;
+  padding: 0.9rem 0.8rem;
 }
 
 .price-card .karat {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--muted);
 }
 
 .price-card strong {
   display: block;
-  margin-top: 0.35rem;
-  font-size: 1.4rem;
+  margin-top: 0.3rem;
+  font-size: 1.12rem;
   color: var(--btn-tertiary);
 }
 
 .price-card.featured {
   border-color: #e954204d;
-  box-shadow: var(--home-dashboard-card-shadow), 0 0 0 1px #e954201a;
 }
 
-.price-card.featured .karat {
+.price-card.featured .karat,
+.price-card.featured strong {
   color: var(--nav-bg);
   font-weight: 700;
 }
 
-.price-card.featured strong {
-  color: var(--nav-bg);
-}
-
 .skeleton div {
-  height: 0.8rem;
+  height: 0.75rem;
   background: #ecf2f7;
   border-radius: 8px;
-  margin: 0.6rem 0;
+  margin: 0.5rem 0;
 }
 
 .fine-print {
-  margin-top: 1rem;
+  margin-top: 0.85rem;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
 .calc-panel {
   display: grid;
-  grid-template-columns: 1.1fr 1fr auto;
-  gap: 1.5rem;
-  align-items: end;
-  padding: 1.5rem;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .calc-form {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 0.8rem;
-  align-items: end;
+  gap: 0.75rem;
 }
 
 label {
@@ -282,56 +304,80 @@ label {
 
 input,
 select {
+  width: 100%;
+  min-height: 48px;
   font: inherit;
+  font-size: 16px;
   padding: 0.7rem 0.75rem;
   border: 1px solid var(--card-border);
-  border-radius: 8px;
+  border-radius: 10px;
   background: #fff;
   color: var(--card-text);
 }
 
 .calc-result {
-  min-width: 12rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--card-border);
 }
 
 .calc-label {
   display: block;
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 #calc-value {
-  font-size: 1.85rem;
+  font-size: 1.7rem;
   color: var(--nav-bg);
 }
 
+.feature-grid {
+  grid-template-columns: 1fr;
+}
+
 .feature-grid article {
-  padding: 1.25rem;
+  padding: 1rem;
+}
+
+.feature-grid p {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
 }
 
 .faq-list {
   display: grid;
-  gap: 0.75rem;
-  max-width: 48rem;
+  gap: 0.65rem;
 }
 
 .faq-list details {
-  padding: 0.9rem 1.1rem;
+  padding: 0.85rem 1rem;
+}
+
+.faq-list p {
+  margin: 0.55rem 0 0;
+}
+
+.faq-list code {
+  display: block;
+  margin-top: 0.35rem;
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
 }
 
 summary {
   cursor: pointer;
   font-weight: 700;
+  min-height: 28px;
 }
 
 .cta {
-  margin: 0 6vw 3rem;
-  padding: 2.5rem;
+  display: grid;
+  gap: 0.35rem;
+  margin: 0 var(--pad) 1.25rem;
+  padding: 1.25rem;
   border-radius: 12px;
   background: var(--footer-bg);
   color: var(--footer-heading);
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .cta h2 {
@@ -343,48 +389,16 @@ summary {
 }
 
 .cta .btn-gold {
-  background: var(--btn-primary);
-  color: var(--btn-text) !important;
+  margin-top: 0.5rem;
 }
 
 .site-footer {
-  padding: 1.5rem 6vw 2.5rem;
+  padding: 1rem var(--pad) 1.5rem;
   background: var(--footer-bg);
   color: var(--footer-text);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
 .site-footer a {
   color: #ffedd5;
-}
-
-@media (max-width: 900px) {
-  .nav-toggle {
-    display: inline-flex;
-  }
-
-  .site-nav {
-    display: none;
-    position: absolute;
-    top: 56px;
-    right: 6vw;
-    left: 6vw;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1rem;
-    background: var(--nav-bg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-  }
-
-  .site-nav.open {
-    display: flex;
-  }
-
-  .price-grid,
-  .feature-grid,
-  .calc-panel,
-  .calc-form {
-    grid-template-columns: 1fr;
-  }
 }
