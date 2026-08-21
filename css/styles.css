@@ -1,12 +1,22 @@
 :root {
-  --ink: #1c1408;
-  --muted: #5c4a32;
-  --paper: #f6efe2;
-  --card: #fffaf1;
-  --gold: #b8860b;
-  --gold-deep: #8a6508;
-  --line: #e4d5b3;
-  --shadow: 0 12px 40px rgba(28, 20, 8, 0.08);
+  --nav-bg: #e95420;
+  --nav-text: #ffffff;
+  --body-bg: #dfe8f2;
+  --card-bg: #ffffff;
+  --card-text: #2d3748;
+  --card-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --home-dashboard-card-shadow: 0 1px 2px rgba(15, 23, 42, 0.06),
+    0 6px 16px -4px rgba(15, 23, 42, 0.08);
+  --card-border: #e2e8f0;
+  --footer-bg: #1e2939;
+  --footer-text: #cccccc;
+  --footer-heading: #ffffff;
+  --btn-primary: #77ac68;
+  --btn-primary-hover: #6a965c;
+  --btn-secondary: #f45928;
+  --btn-tertiary: #282828;
+  --btn-text: #ffffff;
+  --muted: #64748b;
 }
 
 * {
@@ -19,32 +29,18 @@ html {
 
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  color: var(--ink);
-  background:
-    radial-gradient(1200px 400px at 80% -10%, rgba(212, 175, 55, 0.18), transparent 60%),
-    var(--paper);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--card-text);
+  background: var(--body-bg);
   line-height: 1.55;
 }
 
-h1,
-h2,
-h3,
-.brand-text,
-.btn,
-.nav-toggle,
-.price-card strong,
-#calc-value {
-  font-family: "Palatino Linotype", Palatino, Georgia, serif;
-}
-
 a {
-  color: var(--gold-deep);
+  color: var(--nav-bg);
 }
 
 .gold-line {
-  height: 4px;
-  background: linear-gradient(90deg, #8a6508, #e6c35c, #8a6508);
+  display: none;
 }
 
 .site-header {
@@ -55,10 +51,9 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.9rem 6vw;
-  background: rgba(246, 239, 226, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  padding: 0.75rem 6vw;
+  background: var(--nav-bg);
+  color: var(--nav-text);
 }
 
 .brand {
@@ -66,35 +61,37 @@ a {
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
-  color: inherit;
+  color: var(--nav-text);
 }
 
 .brand-text {
   font-size: 1.15rem;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .brand-text span {
-  color: var(--gold-deep);
+  color: #ffedd5;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.1rem;
 }
 
 .site-nav a {
   text-decoration: none;
-  color: var(--ink);
+  color: var(--nav-text);
   font-size: 0.95rem;
 }
 
 .nav-toggle {
   display: none;
-  border: 1px solid var(--line);
-  background: var(--card);
-  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  color: var(--nav-text);
+  border-radius: 8px;
   padding: 0.4rem 0.9rem;
 }
 
@@ -102,7 +99,7 @@ a {
 .section,
 .cta,
 .site-footer {
-  padding: 4.5rem 6vw;
+  padding: 4rem 6vw;
 }
 
 .hero {
@@ -111,22 +108,29 @@ a {
 
 .eyebrow {
   margin: 0 0 0.75rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 0.72rem;
-  color: var(--gold-deep);
+  font-weight: 700;
+  color: var(--nav-bg);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--btn-tertiary);
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(2.4rem, 6vw, 4.4rem);
-  line-height: 1.08;
-  font-weight: 600;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.15;
+  font-weight: 700;
 }
 
 .lede {
   max-width: 42rem;
-  font-size: 1.15rem;
+  font-size: 1.08rem;
   color: var(--muted);
 }
 
@@ -146,37 +150,45 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.2rem;
-  border-radius: 999px;
+  padding: 0.7rem 1.15rem;
+  border-radius: 8px;
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
+  font: inherit;
   font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .btn-gold,
 .nav-cta {
-  background: var(--ink);
-  color: #f6efe2 !important;
+  background: var(--btn-primary);
+  color: var(--btn-text) !important;
   text-decoration: none;
-  border-radius: 999px;
-  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  padding: 0.5rem 0.95rem;
 }
 
 .btn-gold {
-  padding: 0.75rem 1.2rem;
+  padding: 0.7rem 1.15rem;
+}
+
+.btn-gold:hover,
+.nav-cta:hover {
+  background: var(--btn-primary-hover);
 }
 
 .btn-ghost {
-  border-color: var(--ink);
-  color: var(--ink);
+  border-color: var(--btn-secondary);
+  color: var(--btn-secondary);
+  background: var(--card-bg);
 }
 
 .section-head h2,
 .calc-panel h2,
 .cta h2 {
   margin: 0 0 0.4rem;
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
 }
 
 .section-head p,
@@ -197,14 +209,14 @@ h1 {
 .feature-grid article,
 .calc-panel,
 .faq-list details {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: var(--home-dashboard-card-shadow);
 }
 
 .price-card {
-  padding: 1.15rem 1.2rem;
+  padding: 1.1rem 1.15rem;
 }
 
 .price-card .karat {
@@ -216,23 +228,28 @@ h1 {
 .price-card strong {
   display: block;
   margin-top: 0.35rem;
-  font-size: 1.45rem;
+  font-size: 1.4rem;
+  color: var(--btn-tertiary);
 }
 
 .price-card.featured {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  border-color: #e954204d;
+  box-shadow: var(--home-dashboard-card-shadow), 0 0 0 1px #e954201a;
 }
 
 .price-card.featured .karat {
-  color: #e6c35c;
+  color: var(--nav-bg);
+  font-weight: 700;
+}
+
+.price-card.featured strong {
+  color: var(--nav-bg);
 }
 
 .skeleton div {
   height: 0.8rem;
-  background: #eee3cc;
-  border-radius: 999px;
+  background: #ecf2f7;
+  border-radius: 8px;
   margin: 0.6rem 0;
 }
 
@@ -247,7 +264,7 @@ h1 {
   grid-template-columns: 1.1fr 1fr auto;
   gap: 1.5rem;
   align-items: end;
-  padding: 1.6rem;
+  padding: 1.5rem;
 }
 
 .calc-form {
@@ -267,9 +284,10 @@ input,
 select {
   font: inherit;
   padding: 0.7rem 0.75rem;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
   background: #fff;
+  color: var(--card-text);
 }
 
 .calc-result {
@@ -283,11 +301,12 @@ select {
 }
 
 #calc-value {
-  font-size: 2rem;
+  font-size: 1.85rem;
+  color: var(--nav-bg);
 }
 
 .feature-grid article {
-  padding: 1.3rem;
+  padding: 1.25rem;
 }
 
 .faq-list {
@@ -302,32 +321,41 @@ select {
 
 summary {
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .cta {
-  margin: 0 6vw 4rem;
-  padding: 3rem;
-  border-radius: 24px;
-  background: var(--ink);
-  color: var(--paper);
+  margin: 0 6vw 3rem;
+  padding: 2.5rem;
+  border-radius: 12px;
+  background: var(--footer-bg);
+  color: var(--footer-heading);
   flex-direction: column;
   align-items: flex-start;
 }
 
+.cta h2 {
+  color: var(--footer-heading);
+}
+
 .cta p {
-  color: #d9c9a6;
+  color: var(--footer-text);
 }
 
 .cta .btn-gold {
-  background: #f6efe2;
-  color: var(--ink) !important;
+  background: var(--btn-primary);
+  color: var(--btn-text) !important;
 }
 
 .site-footer {
-  padding-top: 0;
-  color: var(--muted);
+  padding: 1.5rem 6vw 2.5rem;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   font-size: 0.9rem;
+}
+
+.site-footer a {
+  color: #ffedd5;
 }
 
 @media (max-width: 900px) {
@@ -338,15 +366,15 @@ summary {
   .site-nav {
     display: none;
     position: absolute;
-    top: 64px;
+    top: 56px;
     right: 6vw;
     left: 6vw;
     flex-direction: column;
     align-items: stretch;
     padding: 1rem;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 16px;
+    background: var(--nav-bg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
   }
 
   .site-nav.open {
