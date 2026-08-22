@@ -33,6 +33,7 @@
 
       <nav id="site-nav" class="site-nav">
         <a href="#harga">Harga</a>
+        <a href="#sejarah">Sejarah</a>
         <a href="#kalkulator">Kalkulator</a>
         <a href="#kenapa">Kenapa kami</a>
         <a href="#soalan">Soalan lazim</a>
@@ -71,6 +72,14 @@
         <p class="fine-print">
           Harga rujukan spot sahaja — belum termasuk premium, upah, susut nilai atau caj kedai.
         </p>
+      </section>
+
+      <section id="sejarah" class="section history">
+        <div class="section-head">
+          <h2>Harga harian</h2>
+          <p>Satu rekod sehari dalam SQLite. Dikemas kini bila halaman ini memuat harga semasa.</p>
+        </div>
+        <div id="history-list" class="history-list">Memuatkan sejarah harga…</div>
       </section>
 
       <section id="kalkulator" class="section calculator">
@@ -142,6 +151,13 @@
             <p>
               Tidak. HargaEmas.my (HRGMS) ialah portal dan penyedia API yang mengagregat sumber pasaran.
               Untuk harga rasmi jenama tertentu, rujuk laman penyedia itu.
+            </p>
+          </details>
+          <details>
+            <summary>Di mana harga harian disimpan?</summary>
+            <p>
+              Secara tempatan dalam SQLite (<code>data/gold_prices.db</code>), satu baris setiap tarikh
+              Malaysia. Endpoint: <code>/api/history</code>.
             </p>
           </details>
           <details>

@@ -402,3 +402,59 @@ summary {
 .site-footer a {
   color: #ffedd5;
 }
+
+.history-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.history-row {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem 0.9rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: var(--home-dashboard-card-shadow);
+}
+
+.history-date {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.history-prices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.history-prices span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.history-prices strong {
+  font-size: 1rem;
+}
+
+.delta {
+  margin-left: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.delta.up {
+  color: #15803d;
+}
+
+.delta.down {
+  color: #b91c1c;
+}
+
+.delta.flat {
+  color: var(--muted);
+}

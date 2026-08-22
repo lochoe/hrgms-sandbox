@@ -99,4 +99,62 @@ nav.querySelectorAll("a").forEach((link) => {
   });
 });
 
-loadPrices();
+function formatDay(isoDate) {
+  try {
+    return new Date(`${isoDate}T00:00:00+08:00`).toLocaleDateString("ms-MY", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      timeZone: "Asia/Kuala_Lumpur",
+    });
+  } catch (err) {
+    return isoDate;
+  }
+}
+
+function formatDelta(value) {
+  if (value == null) return "";
+  const rounded = Number(value);
+  if (Math.abs(rounded) < 0.0005) return `<span class="delta flat">0.000</span>`;
+  const sign = rounded > 0 ? "+" : "";
+  const cls = rounded > 0 ? "up" : "down";
+  return `<span class="delta ${cls}">${sign}${rounded.toFixed(3)}</span>`;
+}
+
+async function loadHistory() {
+  const list = document.getElementById("history-list");
+  try {
+    const response = await fetch("/api/history?days=14");
+    if (!response.ok) throw new Error("Gagal memuatkan sejarah");
+    const data = await response.json();
+    const rows = data.rows || [];
+    if (!rows.length) {
+      list.textContent = "Belum ada rekod harian. Muat semula halaman selepas harga semasa disimpan.";
+      return;
+    }
+    list.innerHTML = rows
+      .map(
+        (row) => `
+      <article class="history-row">
+        <p class="history-date">${formatDay(row.price_date)}</p>
+        <div class="history-prices">
+          <p>
+            <span>999 /g</span>
+            <strong>${formatRm(row.gram_999)}</strong>${formatDelta(row.change_999)}
+          </p>
+          <p>
+            <span>916 /g</span>
+            <strong>${formatRm(row.gram_916)}</strong>
+          </p>
+        </div>
+      </article>
+    `
+      )
+      .join("");
+  } catch (err) {
+    list.textContent = "Sejarah harga tidak dapat dimuat.";
+  }
+}
+
+loadPrices().then(loadHistory);
